@@ -3,11 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "echo \"Error: no test specified\" && exit 1"
+    "build-start": "docker compose -f dev.docker-compose.yml up --build -d",
+    "start": "docker compose -f dev.docker-compose.yml up -d",
+    "stop": "docker compose -f dev.docker-compose.yml stop",
+    "destroy-stop": "docker compose -f dev.docker-compose.yml down",
+    "clean-db:app": "docker exec carx-node-api /home/node/app/node_modules/.bin/ts-node /home/node/app/src/models/application/scripts/syncDb.ts -f",
+    "clean-db-with-data:app": "docker exec carx-node-api /home/node/app/node_modules/.bin/ts-node /home/node/app/src/models/application/scripts/syncDb.ts -f -l",
+    "clean-db:auth": "docker exec carx-node-api /home/node/app/node_modules/.bin/ts-node /home/node/app/src/models/auth/scripts/syncDb.ts -f",
+    "clean-db-with-data:auth": "docker exec carx-node-api /home/node/app/node_modules/.bin/ts-node /home/node/app/src/models/auth/scripts/syncDb.ts -f -l"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/hassan-attar/CarX.git"
   },
-  "private": true,
+  "private": true
 }
