@@ -63,6 +63,7 @@ services:
       GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
       GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
       SESSION_SECRET: ${SESSION_SECRET}
+      OPENCAGE_API_KEY: ${OPENCAGE_API_KEY}
     restart: always
     volumes:
       - ./backend/src:/home/node/app/src
