@@ -64,6 +64,8 @@ services:
       GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
       SESSION_SECRET: ${SESSION_SECRET}
       OPENCAGE_API_KEY: ${OPENCAGE_API_KEY}
+      STRIPE_PUBLISHABLE_KEY: ${STRIPE_PUBLISHABLE_KEY}
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
     restart: always
     volumes:
       - ./backend/src:/home/node/app/src
