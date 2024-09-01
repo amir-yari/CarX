@@ -7,12 +7,13 @@ services:
       POSTGRES_PASSWORD: developmentDatabasePassword
       POSTGRES_USER: developmentUser
       POSTGRES_DB: appDb
+      PGPORT: 9999
     volumes:
       - app_db_data:/var/lib/postgresql/data
     networks:
       - private
     ports:
-      - "9999:5432"
+      - "9999:9999"
 
   auth-db:
     build:
@@ -22,17 +23,18 @@ services:
       POSTGRES_PASSWORD: developmentDatabasePassword
       POSTGRES_USER: developmentUser
       POSTGRES_DB: authDb
+      PGPORT: 8888
     volumes:
       - auth_db_data:/var/lib/postgresql/data
     networks:
       - private
     ports:
-      - "8888:5432"
+      - "8888:8888"
 
   node-api:
     build:
       context: backend
-      dockerfile: dev.Dockerfile
+      dockerfile: Dockerfile
       args:
         NODE_ENV: development
         freshDb: true
@@ -47,14 +49,14 @@ services:
       DB_AUTH_USERNAME: developmentUser
       DB_AUTH_PASSWORD: developmentDatabasePassword
       DB_AUTH_HOST: auth-db
-      DB_AUTH_PORT: 5432
+      DB_AUTH_PORT: 8888
       DB_AUTH_DIALECT: postgres
       DB_AUTH_PROTOCOL: tcp
       DB_AUTH_NAME: authDb
       DB_APP_USERNAME: developmentUser
       DB_APP_PASSWORD: developmentDatabasePassword
       DB_APP_HOST: app-db
-      DB_APP_PORT: 5432
+      DB_APP_PORT: 9999
       DB_APP_DIALECT: postgres
       DB_APP_PROTOCOL: tcp
       DB_APP_NAME: appDb
@@ -66,6 +68,7 @@ services:
       OPENCAGE_API_KEY: ${OPENCAGE_API_KEY}
       STRIPE_PUBLISHABLE_KEY: ${STRIPE_PUBLISHABLE_KEY}
       STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
+      STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET}
     restart: always
     volumes:
       - ./backend/src:/home/node/app/src
