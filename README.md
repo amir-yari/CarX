@@ -30,8 +30,9 @@ CarX is a car-sharing Platform designed to function like Turo, offering a seamle
     - Containerized and deployed the application to its own cluster on AWS.
 
 - **Amir**: Frontend Engineer
-    - Developed the UI and web app.
-    - Integrated and served the API to the end user.
+    - Developed a responsive and user-friendly UI ensuring smooth navigation and interaction for car owners and renters, while maintaining consistency across various devices and screen sizes.
+    - Collaborated closely with the backend team to integrate the API, handling real-time data fetching for car listings, booking, and user management.
+    - Implemented a seamless booking flow, enhancing the user experience with features like trip tracking, reservation management, and intuitive search functionality.
 
 
 ### Development Setup
